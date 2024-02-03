@@ -1,6 +1,7 @@
 package com.example.jwtauthentication.service;
 
 import com.example.jwtauthentication.dto.CreateUserRequest;
+import com.example.jwtauthentication.model.Role;
 import com.example.jwtauthentication.model.User;
 import com.example.jwtauthentication.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -10,7 +11,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -57,6 +60,12 @@ public class UserService implements UserDetailsService {
 
         return userRepository.save(newUser);
     }
+
+    public List<User> getUserByCity(String city){
+        return userRepository.findUsersByCity(city);
+    }
+
+
 
 
 
