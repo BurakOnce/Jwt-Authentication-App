@@ -3,6 +3,7 @@ package com.example.jwtauthentication.controller;
 
 import com.example.jwtauthentication.dto.AuthRequest;
 import com.example.jwtauthentication.dto.CreateUserRequest;
+import com.example.jwtauthentication.model.Role;
 import com.example.jwtauthentication.model.User;
 import com.example.jwtauthentication.service.JwtService;
 import com.example.jwtauthentication.service.UserService;
@@ -12,6 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
+import java.util.Set;
+import java.util.List;
 
 @RestController
 @RequestMapping("/app")
@@ -65,4 +68,9 @@ public class UserController {
     public String getManagerString() {
         return "This is MANAGER!";
     }
+
+    @GetMapping("/admin/getUserByCity")
+    public List<User> getUserByCity(String city) {return service.getUserByCity(city);}
+
+
 }
